@@ -76,7 +76,7 @@ public class Example6 {
                         for (Element element : elements) {
                             if (selector.isSelected(element)) count++;
                         }
-                        labelFeedback.setText("Matching documents: "+count+ " of " + elements.size());
+                        labelFeedback.setText("Matching elements: "+count+ " of " + elements.size());
                         buttonOk.setEnabled(true);
                     } catch (Exception e) {
                         labelFeedback.setText(e.getMessage());
