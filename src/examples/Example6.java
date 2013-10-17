@@ -41,11 +41,11 @@ import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 
-import com.linearbits.objectselector.ICallback;
-import com.linearbits.objectselector.Selector;
-import com.linearbits.objectselector.SelectorBuilder;
-import com.linearbits.objectselector.SelectorTokenizer;
-import com.linearbits.objectselector.util.ObjectAccessor;
+import de.linearbits.objectselector.ICallback;
+import de.linearbits.objectselector.Selector;
+import de.linearbits.objectselector.SelectorBuilder;
+import de.linearbits.objectselector.SelectorTokenizer;
+import de.linearbits.objectselector.util.ObjectAccessor;
 
 /**
  * Example for a user interface with syntax highlighting

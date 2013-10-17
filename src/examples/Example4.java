@@ -21,9 +21,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.linearbits.objectselector.Selector;
-import com.linearbits.objectselector.SelectorBuilder;
-import com.linearbits.objectselector.util.IntArrayAccessor;
+import de.linearbits.objectselector.Selector;
+import de.linearbits.objectselector.SelectorBuilder;
+import de.linearbits.objectselector.util.IntArrayAccessor;
 
 /**
  * Example with accessor for arrays of primitives

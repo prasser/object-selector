@@ -16,8 +16,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import com.linearbits.objectselector.IAccessor;
-import com.linearbits.objectselector.datatypes.DataType;
+import de.linearbits.objectselector.IAccessor;
+import de.linearbits.objectselector.datatypes.DataType;
 
 /**
  * An accessor for the Element class

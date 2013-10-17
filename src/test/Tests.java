@@ -26,10 +26,10 @@ import junit.framework.TestCase;
 
 import org.junit.Test;
 
-import com.linearbits.objectselector.Selector;
-import com.linearbits.objectselector.SelectorBuilder;
-import com.linearbits.objectselector.util.IntArrayAccessor;
-import com.linearbits.objectselector.util.ObjectAccessor;
+import de.linearbits.objectselector.Selector;
+import de.linearbits.objectselector.SelectorBuilder;
+import de.linearbits.objectselector.util.IntArrayAccessor;
+import de.linearbits.objectselector.util.ObjectAccessor;
 
 public class Tests extends TestCase {
 

@@ -21,9 +21,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.linearbits.objectselector.Selector;
-import com.linearbits.objectselector.SelectorBuilder;
-import com.linearbits.objectselector.util.ObjectAccessor;
+import de.linearbits.objectselector.Selector;
+import de.linearbits.objectselector.SelectorBuilder;
+import de.linearbits.objectselector.util.ObjectAccessor;
 
 /**
  * Example with custom standard object accessor

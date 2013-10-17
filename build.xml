@@ -35,11 +35,11 @@
     <target name="javadoc-api" depends="clean-javadoc">
         <javadoc destdir="tmpdoc/api" source="1.6" notree="false" nonavbar="false" noindex="false" splitindex="true" access="public" use="true" author="Fabian Praßer" version="0.1" windowtitle="ObjectSelector" private="false" failonerror="true">
            <fileset dir="src/main" defaultexcludes="yes">
-      			<include name="com/linearbits/objectselector/**"/>
-      			<exclude name="com/linearbits/objectselector/ops/**"/>
-      			<exclude name="com/linearbits/objectselector/SelectorTokenizer.java"/>
-      			<exclude name="com/linearbits/objectselector/SelectorBuilderCallback.java"/>
-      			<exclude name="com/linearbits/objectselector/Parser.java"/>
+      			<include name="de/linearbits/objectselector/**"/>
+      			<exclude name="de/linearbits/objectselector/ops/**"/>
+      			<exclude name="de/linearbits/objectselector/SelectorTokenizer.java"/>
+      			<exclude name="de/linearbits/objectselector/SelectorBuilderCallback.java"/>
+      			<exclude name="de/linearbits/objectselector/Parser.java"/>
     		</fileset>
         </javadoc>
     </target>
