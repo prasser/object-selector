@@ -49,7 +49,7 @@ for (Element element : list){
 }
 ```
 
-[![Image](https://raw.github.com/prasser/object-selector/master/doc/example.png)]
+![Image](https://raw.github.com/prasser/object-selector/master/doc/example.png)
 
 Documentation
 ------
