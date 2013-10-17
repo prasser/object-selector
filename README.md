@@ -22,6 +22,14 @@ syntax highlighting. It has no dependencies.
 
 Examples
 ------
+```Java
+public class Element {
+
+	public boolean bool;
+	public int integer;
+	public double numeric;
+}
+```
 
 ```Java
 Selector<Element> selector = new SelectorBuilder<Element>(new ObjectAccessor<Element>(Element.class))
