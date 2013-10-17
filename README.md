@@ -24,7 +24,6 @@ Examples
 ------
 ```Java
 public class Element {
-
 	public boolean bool;
 	public int integer;
 	public double numeric;
