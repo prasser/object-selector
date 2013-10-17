@@ -1,4 +1,4 @@
-ObjectSelector - Object selection library for Java
+ObjectSelector - Object selection library
 ====
 
 Introduction
@@ -6,10 +6,15 @@ Introduction
 ObjectSelector is a small, general purpose library for selecting objects from 
 sets of objects. To this end, it enables users to specify simple selection predicates. It 
 supports multiple features, including: 
+
 1. Converting between different data types
+
 2. Transparent handling of sets of objects via reflection
+
 3. Transparent handling of sets of arrays of different types
+
 4. Creating selection predicates using the builder pattern 
+
 5. Creating selection predicates by parsing query strings
 
 The library is extensible and is also suitable for building user interfaces with
@@ -56,6 +61,9 @@ Javadoc documentation for the whole repository can be found
 Downloads
 ------
 [0.1 Library](https://raw.github.com/prasser/object-selector/master/jars/objectselector-0.1-lib.jar)
+
 [0.1 API documentation](https://raw.github.com/prasser/object-selector/master/jars/objectselector-0.1-api-doc.jar)
+
 [0.1 Source](https://raw.github.com/prasser/object-selector/master/jars/objectselector-0.1-src.jar)
+
 [0.1 Developer documentation](https://raw.github.com/prasser/object-selector/master/jars/objectselector-0.1-dev-doc.jar)
