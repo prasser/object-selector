@@ -51,7 +51,7 @@ Selector<Element> selector = new SelectorBuilder<Element>(new ObjectAccessor<Ele
 ```Java
 for (Element element : list){
 	if (selector.isSelected(element)) {
-          // Its selected
+          // It's selected
     }
 }
 ```
