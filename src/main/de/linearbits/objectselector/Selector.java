@@ -60,60 +60,17 @@ public class Selector<T> {
     }
 
     /**
-     * Returns the subset of all selected elements. Returns a new list.
+     * Removes all selected elements. Returns a new collection.
      * 
      * @param input
      * @return
      */
-    public List<T> retain(List<T> input) {
+    public Collection<T> remove(Collection<T> input) {
         List<T> result = new ArrayList<T>();
         for (T t : input){
-            if (isSelected(t)) result.add(t);
+            if (!isSelected(t)) result.add(t);
         }
         return result;
-    }
-
-    /**
-     * Returns the subset of all selected elements. Returns a new collection.
-     * 
-     * @param input
-     * @return
-     */
-    public Collection<T> retain(Collection<T> input) {
-        List<T> result = new ArrayList<T>();
-        for (T t : input){
-            if (isSelected(t)) result.add(t);
-        }
-        return result;
-    }
-
-    /**
-     * Returns the subset of all selected elements. Returns a new set.
-     * 
-     * @param input
-     * @return
-     */
-    public Set<T> retain(Set<T> input) {
-        Set<T> result = new HashSet<T>();
-        for (T t : input){
-            if (isSelected(t)) result.add(t);
-        }
-        return result;
-    }
-
-    /**
-     * Returns the subset of all selected elements. Returns a new array.
-     * 
-     * @param input
-     * @return
-     */
-    public T[] retain(T[] input) {
-        List<T> list = retain(Arrays.asList(input));
-        T[] result = input.clone();
-        for (int i=0; i<list.size(); i++){
-            result[i] = list.get(i);
-        }
-        return Arrays.copyOf(result, list.size());
     }
 
     /**
@@ -123,20 +80,6 @@ public class Selector<T> {
      * @return
      */
     public List<T> remove(List<T> input) {
-        List<T> result = new ArrayList<T>();
-        for (T t : input){
-            if (!isSelected(t)) result.add(t);
-        }
-        return result;
-    }
-
-    /**
-     * Removes all selected elements. Returns a new collection.
-     * 
-     * @param input
-     * @return
-     */
-    public Collection<T> remove(Collection<T> input) {
         List<T> result = new ArrayList<T>();
         for (T t : input){
             if (!isSelected(t)) result.add(t);
@@ -166,6 +109,63 @@ public class Selector<T> {
      */
     public T[] remove(T[] input) {
         List<T> list = remove(Arrays.asList(input));
+        T[] result = input.clone();
+        for (int i=0; i<list.size(); i++){
+            result[i] = list.get(i);
+        }
+        return Arrays.copyOf(result, list.size());
+    }
+
+    /**
+     * Returns the subset of all selected elements. Returns a new collection.
+     * 
+     * @param input
+     * @return
+     */
+    public Collection<T> retain(Collection<T> input) {
+        List<T> result = new ArrayList<T>();
+        for (T t : input){
+            if (isSelected(t)) result.add(t);
+        }
+        return result;
+    }
+
+    /**
+     * Returns the subset of all selected elements. Returns a new list.
+     * 
+     * @param input
+     * @return
+     */
+    public List<T> retain(List<T> input) {
+        List<T> result = new ArrayList<T>();
+        for (T t : input){
+            if (isSelected(t)) result.add(t);
+        }
+        return result;
+    }
+
+    /**
+     * Returns the subset of all selected elements. Returns a new set.
+     * 
+     * @param input
+     * @return
+     */
+    public Set<T> retain(Set<T> input) {
+        Set<T> result = new HashSet<T>();
+        for (T t : input){
+            if (isSelected(t)) result.add(t);
+        }
+        return result;
+    }
+
+    /**
+     * Returns the subset of all selected elements. Returns a new array.
+     * 
+     * @param input
+     * @return
+     */
+    public T[] retain(T[] input) {
+        List<T> list = retain(Arrays.asList(input));
         T[] result = input.clone();
         for (int i=0; i<list.size(); i++){
             result[i] = list.get(i);

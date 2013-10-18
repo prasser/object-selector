@@ -207,9 +207,9 @@ public class Example6 {
         
 	    // Register listener
 	    document.addDocumentListener(new DocumentListener(){
+            public void changedUpdate(DocumentEvent e) {}
             public void insertUpdate(DocumentEvent e)  { update(); }
             public void removeUpdate(DocumentEvent e)  { update(); }
-            public void changedUpdate(DocumentEvent e) {}
 	    });
 	    
 	    // Set initial text
@@ -221,33 +221,6 @@ public class Example6 {
 	    t.start();
 	  }
 	
-	/**
-	 * Reacts on a document update 
-	 */
-	private static void update()   {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    query = document.getText(0, document.getLength());
-                    setStyle(0, document.getLength(), styleMain);
-                    new SelectorTokenizer<Element>(callback).tokenize(query);
-                } catch (BadLocationException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
-	}
-	
-	/**
-	 * Sets the style on the document
-	 * @param offset
-	 * @param length
-	 * @param style
-	 */
-	private static void setStyle(final int offset, final int length, final Style style) {
-	    document.setCharacterAttributes(offset, length, style, true);
-	}
-
 	/**
 	 * Creates all styles for syntax highlighting
 	 * @param sc
@@ -285,4 +258,31 @@ public class Example6 {
         StyleConstants.setForeground(styleValue, Color.DARK_GRAY);
         StyleConstants.setBold(styleValue, true);
     }
+	
+	/**
+	 * Sets the style on the document
+	 * @param offset
+	 * @param length
+	 * @param style
+	 */
+	private static void setStyle(final int offset, final int length, final Style style) {
+	    document.setCharacterAttributes(offset, length, style, true);
+	}
+
+	/**
+	 * Reacts on a document update 
+	 */
+	private static void update()   {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    query = document.getText(0, document.getLength());
+                    setStyle(0, document.getLength(), styleMain);
+                    new SelectorTokenizer<Element>(callback).tokenize(query);
+                } catch (BadLocationException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+	}
 }

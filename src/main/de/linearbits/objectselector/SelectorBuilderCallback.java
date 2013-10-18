@@ -92,18 +92,6 @@ public class SelectorBuilderCallback<T> implements ICallback{
 
     /**
      * Handle an operator
-     * @param operator
-     */
-    private void setCurrent(Operator operator) {
-        if (currentOp != null) {
-            throw new RuntimeException("Duplicate operator: " + operator);
-        } else {
-            currentOp = operator;
-        }
-    }
-
-    /**
-     * Handle an operator
      * @param start
      */
     public void equals(int start) {
@@ -278,4 +266,16 @@ public class SelectorBuilderCallback<T> implements ICallback{
 		}
 		return buffer.toString();
 	}
+
+    /**
+     * Handle an operator
+     * @param operator
+     */
+    private void setCurrent(Operator operator) {
+        if (currentOp != null) {
+            throw new RuntimeException("Duplicate operator: " + operator);
+        } else {
+            currentOp = operator;
+        }
+    }
 }

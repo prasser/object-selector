@@ -26,43 +26,36 @@ import de.linearbits.objectselector.datatypes.DataType;
  */
 public class ElementAccessor implements IAccessor<Element> {
 
-	@Override
-	public boolean exists(String context) {
-		return context.equals("bool") || context.equals("integer")
-				|| context.equals("numeric");
-	}
+    @Override
+    public boolean exists(String context) {
+        return context.equals("bool") 
+                || context.equals("integer")
+                || context.equals("numeric");
+    }
 
-	@Override
-	public DataType<?> getType(String context) {
-		if (context.equals("bool"))
-			return DataType.BOOLEAN;
-		else if (context.equals("integer"))
-			return DataType.NUMERIC;
-		else if (context.equals("numeric"))
-			return DataType.NUMERIC;
-		else
-			throw new RuntimeException("Invalid field!");
-	}
+    @Override
+    public DataType<?> getType(String context) {
+        if (context.equals("bool")) return DataType.BOOLEAN;
+        else if (context.equals("integer")) return DataType.NUMERIC;
+        else if (context.equals("numeric")) return DataType.NUMERIC;
+        else throw new RuntimeException("Invalid field!");
+    }
 
-	@Override
-	public boolean isDataTypesSupported() {
-		return true;
-	}
+    @Override
+    public Object getValue(Element object, String context) {
+        if (context.equals("bool")) return object.bool;
+        if (context.equals("numeric")) return object.numeric;
+        else if (context.equals("integer")) return object.integer;
+        else throw new RuntimeException("Invalid field!");
+    }
 
-	@Override
-	public boolean isExistanceSupported() {
-		return true;
-	}
+    @Override
+    public boolean isDataTypesSupported() {
+        return true;
+    }
 
-	@Override
-	public Object getValue(Element object, String context) {
-		if (context.equals("bool"))
-			return object.bool;
-		if (context.equals("numeric"))
-			return object.numeric;
-		else if (context.equals("integer"))
-			return object.integer;
-		else
-			throw new RuntimeException("Invalid field!");
-	}
+    @Override
+    public boolean isExistanceSupported() {
+        return true;
+    }
 };

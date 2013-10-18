@@ -26,12 +26,7 @@ import java.util.Random;
 
 public class Element {
 
-	public boolean bool;
-	public int integer;
-	public double numeric;
-	
-
-    /**
+	/**
      * Creates a random element
      * @return
      */
@@ -42,8 +37,6 @@ public class Element {
         e.numeric = random.nextDouble() * 100d;
         return e;
     }
-    
-
 	/**
 	 * Creates a random entry
 	 * @return
@@ -55,4 +48,11 @@ public class Element {
 		result[2] = random.nextInt(100);
 		return result;
 	}
+	public boolean bool;
+	
+
+    public int integer;
+    
+
+	public double numeric;
 }

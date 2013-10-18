@@ -49,54 +49,6 @@ public class Parser<T> {
     }
 
     /**
-     * Parses the list of operators within the given range
-     * 
-     * @param ops
-     * @param offset
-     * @param length
-     * @return
-     * @throws ParseException 
-     */
-    private AbstractOperator<T> compile(List<AbstractOperator<T>> ops, int offset, int length) throws ParseException {
-
-        int lLength = find(ops, offset, length);
-
-        if (lLength == length) {
-
-            // Case 1: EXPR
-            if (length == 1) {
-
-                // Return single operator
-                return ops.get(offset);
-
-            } else if ((ops.get(offset) instanceof ParenthesisOperator) &&
-                       (ops.get(offset + length - 1) instanceof ParenthesisOperator)) {
-
-                // Remove brackets
-                return compile(ops, offset + 1, length - 2);
-
-            } else {
-                throw new ParseException("Invalid expression", offset);
-            }
-
-        } else {
-
-            // Case 2: EXPR <OP> EXPR
-            if (!(ops.get(offset + lLength) instanceof BinaryOperator)) {
-
-                // Invalid
-                throw new ParseException("Expecting EXPR <OP> EXPR", offset + lLength);
-            } else {
-                // Binary operator
-                BinaryOperator<T> bop = (BinaryOperator<T>) ops.get(offset + lLength);
-                bop.setLeft(compile(ops, offset, lLength));
-                bop.setRight(compile(ops, offset + lLength + 1, length - lLength - 1));
-                return bop;
-            }
-        }
-    }
-
-    /**
      * Finds an expression within the given range
      * 
      * @param ops
@@ -152,12 +104,51 @@ public class Parser<T> {
     }
 
     /**
-     * Starts the compilation process
+     * Parses the list of operators within the given range
+     * 
+     * @param ops
+     * @param offset
+     * @param length
+     * @return
+     * @throws ParseException 
      */
-    protected void parse() throws ParseException {
-        if (operators.isEmpty()) { throw new ParseException("Empty expression", 0); }
-        this.root = compile(operators, 0, operators.size());
-        if (this.root == null) { throw new ParseException("Cannot parse expression", 0); }
+    private AbstractOperator<T> parse(List<AbstractOperator<T>> ops, int offset, int length) throws ParseException {
+
+        int lLength = find(ops, offset, length);
+
+        if (lLength == length) {
+
+            // Case 1: EXPR
+            if (length == 1) {
+
+                // Return single operator
+                return ops.get(offset);
+
+            } else if ((ops.get(offset) instanceof ParenthesisOperator) &&
+                       (ops.get(offset + length - 1) instanceof ParenthesisOperator)) {
+
+                // Remove brackets
+                return parse(ops, offset + 1, length - 2);
+
+            } else {
+                throw new ParseException("Invalid expression", offset);
+            }
+
+        } else {
+
+            // Case 2: EXPR <OP> EXPR
+            if (!(ops.get(offset + lLength) instanceof BinaryOperator)) {
+
+                // Invalid
+                throw new ParseException("Expecting EXPR <OP> EXPR", offset + lLength);
+            } else {
+                // Binary operator
+                BinaryOperator<T> bop = (BinaryOperator<T>) ops.get(offset + lLength);
+                bop.setLeft(parse(ops, offset, lLength));
+                bop.setRight(parse(ops, offset + lLength + 1, length - lLength - 1));
+                return bop;
+            }
+        }
     }
 
     /**
@@ -167,6 +158,15 @@ public class Parser<T> {
      */
     protected AbstractOperator<T> getRoot() {
         return root;
+    }
+
+    /**
+     * Starts the compilation process
+     */
+    protected void parse() throws ParseException {
+        if (operators.isEmpty()) { throw new ParseException("Empty expression", 0); }
+        this.root = parse(operators, 0, operators.size());
+        if (this.root == null) { throw new ParseException("Cannot parse expression", 0); }
     }
 
 }
