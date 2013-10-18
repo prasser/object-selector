@@ -39,7 +39,7 @@ public class Example1 {
     public static void main(String[] args) throws ParseException {
 
         // Create a set of 1000 elements
-    	Random random = new Random();
+        Random random = new Random();
         List<Element> entries = new ArrayList<Element>();
         for (int i=0; i<1000; i++){
             entries.add(Element.getRandomElement(random));
@@ -47,17 +47,17 @@ public class Example1 {
 
         // Create a selector with the builder pattern
         Selector<Element> selector = new SelectorBuilder<Element>(new ElementAccessor())
-            .begin()
+                .begin()
                 .field("bool").equals(true)
                 .and()
                 .field("integer").geq(50)
-            .end()
-            .or()
-            .field("numeric").leq(30d)
-            .build();
-    	
-		// Print selector
-		System.out.println(selector.toString());
+                .end()
+                .or()
+                .field("numeric").leq(30d)
+                .build();
+
+        // Print selector
+        System.out.println(selector.toString());
 
         // Print, which elements are selected
         for (int i=0; i<1000; i++) {
@@ -69,11 +69,11 @@ public class Example1 {
 
         // Create a selector by parsing a query string
         selector = new SelectorBuilder<Element>(new ElementAccessor(), 
-                                                "('bool'='true' and 'integer'>='50') or 'numeric'<='30'")
-                                                .build();
-    	
-		// Print selector
-		System.out.println(selector.toString());
+                "('bool'='true' and 'integer'>='50') or 'numeric'<='30'")
+                .build();
+
+        // Print selector
+        System.out.println(selector.toString());
 
         // Print, which elements are selected
         for (int i=0; i<1000; i++) {

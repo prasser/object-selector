@@ -31,65 +31,65 @@ import de.linearbits.objectselector.util.ArrayAccessor;
  */
 public class Example3 {
 
-	/**
-	 * Main entry
-	 * @param args
-	 * @throws ParseException 
-	 */
-	public static void main(String[] args) throws ParseException {
+    /**
+     * Main entry
+     * @param args
+     * @throws ParseException 
+     */
+    public static void main(String[] args) throws ParseException {
 
-		// Create a set of 1000 elements
-		List<Integer[]> entries = new ArrayList<Integer[]>();
-		for (int i=0; i<1000; i++){
-			entries.add(getRandomEntry());
-		}
-		
-		// Create header
-		ArrayAccessor<Integer> accessor = new ArrayAccessor<Integer>(new String[]{"field1", "field2", "field3"});
+        // Create a set of 1000 elements
+        List<Integer[]> entries = new ArrayList<Integer[]>();
+        for (int i=0; i<1000; i++){
+            entries.add(getRandomEntry());
+        }
 
-		// Create a selector with the builder pattern
-		Selector<Integer[]> selector = new SelectorBuilder<Integer[]>(accessor).field("field1").leq(20)
-                                                                               .and()
-                                                                               .field("field2").leq(20)
-                                                                               .and()
-                                                                               .field("field3").leq(20)
-                                                                               .build();
-		
-		// Print selector
-		System.out.println(selector.toString());
+        // Create header
+        ArrayAccessor<Integer> accessor = new ArrayAccessor<Integer>(new String[]{"field1", "field2", "field3"});
 
-		// Print, which elements are selected
-		for (int i=0; i<1000; i++) {
-			if (selector.isSelected(entries.get(i))) {
-				System.out.println("Is selected: "+i);
-			}
-		}
+        // Create a selector with the builder pattern
+        Selector<Integer[]> selector = new SelectorBuilder<Integer[]>(accessor).field("field1").leq(20)
+                .and()
+                .field("field2").leq(20)
+                .and()
+                .field("field3").leq(20)
+                .build();
 
-		// Create a selector by parsing a query string
-		selector = new SelectorBuilder<Integer[]>(accessor, 
-		                                      "'field1'<='20' and 'field2'<='20' and 'field3'<='20'")
-		                                      .build();
-		
-		// Print selector
-		System.out.println(selector.toString());
+        // Print selector
+        System.out.println(selector.toString());
 
-		// Print, which elements are selected
-		for (int i=0; i<1000; i++) {
-			if (selector.isSelected(entries.get(i))) {
-				System.out.println("Is selected: "+i);
-			}
-		}
-	}
-	
-	/**
-	 * Creates a random entry
-	 * @return
-	 */
-	private static Integer[] getRandomEntry() {
-	    Integer[] result = new Integer[3];
-		result[0] = (int)(Math.random() * 100d);
-		result[1] = (int)(Math.random() * 100d);
-		result[2] = (int)(Math.random() * 100d);
-		return result;
-	}
+        // Print, which elements are selected
+        for (int i=0; i<1000; i++) {
+            if (selector.isSelected(entries.get(i))) {
+                System.out.println("Is selected: "+i);
+            }
+        }
+
+        // Create a selector by parsing a query string
+        selector = new SelectorBuilder<Integer[]>(accessor, 
+                "'field1'<='20' and 'field2'<='20' and 'field3'<='20'")
+                .build();
+
+        // Print selector
+        System.out.println(selector.toString());
+
+        // Print, which elements are selected
+        for (int i=0; i<1000; i++) {
+            if (selector.isSelected(entries.get(i))) {
+                System.out.println("Is selected: "+i);
+            }
+        }
+    }
+
+    /**
+     * Creates a random entry
+     * @return
+     */
+    private static Integer[] getRandomEntry() {
+        Integer[] result = new Integer[3];
+        result[0] = (int)(Math.random() * 100d);
+        result[1] = (int)(Math.random() * 100d);
+        result[2] = (int)(Math.random() * 100d);
+        return result;
+    }
 }

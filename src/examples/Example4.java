@@ -32,54 +32,54 @@ import de.linearbits.objectselector.util.IntArrayAccessor;
  */
 public class Example4 {
 
-	/**
-	 * Main entry
-	 * @param args
-	 * @throws ParseException 
-	 */
-	public static void main(String[] args) throws ParseException {
+    /**
+     * Main entry
+     * @param args
+     * @throws ParseException 
+     */
+    public static void main(String[] args) throws ParseException {
 
-		// Create a set of 1000 elements
-		Random random = new Random();
-		List<int[]> entries = new ArrayList<int[]>();
-		for (int i=0; i<1000; i++){
-			entries.add(Element.getRandomIntArray(random));
-		}
-		
-		// Create header
-		IntArrayAccessor accessor = new IntArrayAccessor(new String[]{"field1", "field2", "field3"});
+        // Create a set of 1000 elements
+        Random random = new Random();
+        List<int[]> entries = new ArrayList<int[]>();
+        for (int i=0; i<1000; i++){
+            entries.add(Element.getRandomIntArray(random));
+        }
 
-		// Create a selector with the builder pattern
-		Selector<int[]> selector = new SelectorBuilder<int[]>(accessor).field("field1").leq(20)
-                                                                       .and()
-                                                                       .field("field2").leq(20)
-                                                                       .and()
-                                                                       .field("field3").leq(20)
-                                                                       .build();
-		
-		// Print selector
-		System.out.println(selector.toString());
+        // Create header
+        IntArrayAccessor accessor = new IntArrayAccessor(new String[]{"field1", "field2", "field3"});
 
-		// Print, which elements are selected
-		for (int i=0; i<1000; i++) {
-			if (selector.isSelected(entries.get(i))) {
-				System.out.println("Is selected: "+i);
-			}
-		}
+        // Create a selector with the builder pattern
+        Selector<int[]> selector = new SelectorBuilder<int[]>(accessor).field("field1").leq(20)
+                .and()
+                .field("field2").leq(20)
+                .and()
+                .field("field3").leq(20)
+                .build();
 
-		// Create a selector by parsing a query string
-		selector = new SelectorBuilder<int[]>(accessor, 
-		                                      "'field1'<='20' and 'field2'<='20' and 'field3'<='20'")
-		                                      .build();
-		
-		// Print selector
-		System.out.println(selector.toString());
+        // Print selector
+        System.out.println(selector.toString());
 
-		// Print, which elements are selected
-		for (int i=0; i<1000; i++) {
-			if (selector.isSelected(entries.get(i))) {
-				System.out.println("Is selected: "+i);
-			}
-		}
-	}
+        // Print, which elements are selected
+        for (int i=0; i<1000; i++) {
+            if (selector.isSelected(entries.get(i))) {
+                System.out.println("Is selected: "+i);
+            }
+        }
+
+        // Create a selector by parsing a query string
+        selector = new SelectorBuilder<int[]>(accessor, 
+                "'field1'<='20' and 'field2'<='20' and 'field3'<='20'")
+                .build();
+
+        // Print selector
+        System.out.println(selector.toString());
+
+        // Print, which elements are selected
+        for (int i=0; i<1000; i++) {
+            if (selector.isSelected(entries.get(i))) {
+                System.out.println("Is selected: "+i);
+            }
+        }
+    }
 }

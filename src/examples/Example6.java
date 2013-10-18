@@ -61,7 +61,7 @@ public class Example6 {
 
             // The previously processed query
             String previous = null;
-            
+
             // The accessor for the elements
             ObjectAccessor<Element> accessor = new ObjectAccessor<Element>(Element.class);
 
@@ -77,22 +77,22 @@ public class Example6 {
                     previous = query;
 
                     try {
-                        
+
                         // Create selector
                         Selector<Element> selector = new SelectorBuilder<Element>(accessor, query).build();
-                        
+
                         // Count number of selected elements
                         int count = 0;
                         for (Element element : elements) {
                             if (selector.isSelected(element)) count++;
                         }
-                        
+
                         // Show feedback
                         labelFeedback.setText("Matching elements: "+count+ " of " + elements.size());
                         buttonOk.setEnabled(true);
-                        
+
                     } catch (Exception e) {
-                        
+
                         // In case of error, show error message
                         labelFeedback.setText(e.getMessage());
                         buttonOk.setEnabled(false);
@@ -291,14 +291,14 @@ public class Example6 {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    
+
                     // Store query string
                     query = document.getText(0, document.getLength());
-                    
+
                     // Perform syntax highlighting
                     setStyle(0, document.getLength(), styleMain);
                     new SelectorTokenizer<Element>(callback).tokenize(query);
-                    
+
                 } catch (BadLocationException e) {
                     throw new RuntimeException(e);
                 }
