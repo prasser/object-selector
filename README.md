@@ -62,17 +62,17 @@ for (Element element : list){
 
 Documentation
 ------
-Many examples are available in the repository.
+More examples are available in the [repository](https://github.com/prasser/object-selector/tree/master/src/examples).
 
 Javadoc documentation for the whole repository can be found
 [here](https://rawgithub.com/prasser/object-selector/master/doc/index.html).
 
 Downloads
 ------
-[0.1 Library](https://raw.github.com/prasser/object-selector/master/jars/objectselector-0.1-lib.jar)
+[Library (Version 0.1)](https://raw.github.com/prasser/object-selector/master/jars/objectselector-0.1-lib.jar)
 
-[0.1 API documentation](https://raw.github.com/prasser/object-selector/master/jars/objectselector-0.1-api-doc.jar)
+[API documentation (Version 0.1)](https://raw.github.com/prasser/object-selector/master/jars/objectselector-0.1-api-doc.jar)
 
-[0.1 Source](https://raw.github.com/prasser/object-selector/master/jars/objectselector-0.1-src.jar)
+[Source (Version 0.1)](https://raw.github.com/prasser/object-selector/master/jars/objectselector-0.1-src.jar)
 
-[0.1 Developer documentation](https://raw.github.com/prasser/object-selector/master/jars/objectselector-0.1-dev-doc.jar)
+[Developer documentation (Version 0.1)](https://raw.github.com/prasser/object-selector/master/jars/objectselector-0.1-dev-doc.jar)
