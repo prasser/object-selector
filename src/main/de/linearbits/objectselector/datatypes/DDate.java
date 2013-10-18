@@ -28,8 +28,13 @@ import java.util.Date;
  */
 public class DDate extends DataType<Date> {
 
+    /** The formatter*/
     private final SimpleDateFormat formatter;
 
+    /**
+     * Creates a new date data type
+     * @param format The format as required by <code>java.text.SimpleDateFormat</code>
+     */
     protected DDate(String format){
         formatter = new SimpleDateFormat(format);
     }

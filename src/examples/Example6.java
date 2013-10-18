@@ -55,21 +55,21 @@ public class Example6 {
 
     /** Thread for updates */
     private static Runnable updater = new Runnable(){
-        
+
         @Override
         public void run() {
-            
+
             String previous = null;
             ObjectAccessor<Element> accessor = new ObjectAccessor<Element>(Element.class);
-            
+
             while (true){
-                
+
                 try { Thread.sleep(INTERVAL); } 
                 catch (InterruptedException e) { /* Ignore */ }
-                
+
                 if (query != previous){
                     previous = query;
-                    
+
                     try {
                         Selector<Element> selector = new SelectorBuilder<Element>(accessor, query).build();
                         int count = 0;
@@ -86,7 +86,7 @@ public class Example6 {
             }
         }
     };
-    
+
     /** Callback for the tokenizer */
     private static ICallback callback = new ICallback() {
 
@@ -128,13 +128,13 @@ public class Example6 {
     private static JButton               buttonOk;
     /** Swing control*/
     private static JButton               buttonCancel;
-    
+
     /** The current query*/
     private static volatile String       query = "";
 
     /** The list of elements to select from*/
     private static List<Element>         elements = new ArrayList<Element>();
-    
+
 
     /**
      * Main entry point
@@ -143,46 +143,46 @@ public class Example6 {
      * @throws InvocationTargetException
      * @throws BadLocationException 
      */
-	public static void main(String[] args) throws InterruptedException, InvocationTargetException, BadLocationException {
-	    
-	    // Use font anti aliasing
-	    System.setProperty("awt.useSystemAAFontSettings","on");
-	    System.setProperty("swing.aatext", "true");
-	    
-	    // Create list of elements
+    public static void main(String[] args) throws InterruptedException, InvocationTargetException, BadLocationException {
+
+        // Use font anti aliasing
+        System.setProperty("awt.useSystemAAFontSettings","on");
+        System.setProperty("swing.aatext", "true");
+
+        // Create list of elements
         Random random = new Random();
         for (int i=0; i<100000; i++){
             elements.add(Element.getRandomElement(random));
         }
-	    
-	    // Create frame
-	    JFrame f = new JFrame("ObjectSelector Dialog Example");
-	    
-	    // Create text pane
-	    StyleContext sc = new StyleContext();
-	    document = new DefaultStyledDocument(sc);
-	    JTextPane pane = new JTextPane(document);
-	    
-	    // Builder center panel
-	    JPanel center = new JPanel();
-	    center.setLayout(new BorderLayout());
-	    center.add(new JScrollPane(pane), BorderLayout.CENTER);
-	    
-	    // Build feedback panel
-	    labelFeedback = new JLabel();
-	    center.add(labelFeedback, BorderLayout.SOUTH);
-	    labelFeedback.setText("");
-	    
-	    // Build buttons panel
-	    JPanel buttons = new JPanel();
-	    buttons.setLayout(new GridLayout(0,2));
-	    buttonOk = new JButton("OK");
-	    buttonOk.setEnabled(false);
-	    buttons.add(buttonOk);
-	    buttonCancel = new JButton("Cancel");
-	    buttons.add(buttonCancel, BorderLayout.WEST);
-	    
-	    // Add listeners
+
+        // Create frame
+        JFrame f = new JFrame("ObjectSelector Dialog Example");
+
+        // Create text pane
+        StyleContext sc = new StyleContext();
+        document = new DefaultStyledDocument(sc);
+        JTextPane pane = new JTextPane(document);
+
+        // Builder center panel
+        JPanel center = new JPanel();
+        center.setLayout(new BorderLayout());
+        center.add(new JScrollPane(pane), BorderLayout.CENTER);
+
+        // Build feedback panel
+        labelFeedback = new JLabel();
+        center.add(labelFeedback, BorderLayout.SOUTH);
+        labelFeedback.setText("");
+
+        // Build buttons panel
+        JPanel buttons = new JPanel();
+        buttons.setLayout(new GridLayout(0,2));
+        buttonOk = new JButton("OK");
+        buttonOk.setEnabled(false);
+        buttons.add(buttonOk);
+        buttonCancel = new JButton("Cancel");
+        buttons.add(buttonCancel, BorderLayout.WEST);
+
+        // Add listeners
         buttonOk.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
@@ -193,9 +193,9 @@ public class Example6 {
                 System.exit(0);
             }
         });
-	    
-	    // Create all necessary styles
-	    createStyles(sc);
+
+        // Create all necessary styles
+        createStyles(sc);
 
         // Bring up frame
         f.getContentPane().setLayout(new BorderLayout());
@@ -204,27 +204,27 @@ public class Example6 {
         f.setSize(400, 150);
         f.setLocationRelativeTo(null);
         f.setVisible(true);
-        
-	    // Register listener
-	    document.addDocumentListener(new DocumentListener(){
+
+        // Register listener
+        document.addDocumentListener(new DocumentListener(){
             public void changedUpdate(DocumentEvent e) {}
             public void insertUpdate(DocumentEvent e)  { update(); }
             public void removeUpdate(DocumentEvent e)  { update(); }
-	    });
-	    
-	    // Set initial text
-	    document.insertString(0, "('bool'='true' and 'integer'>='50') or 'numeric'<='30'", null);
-	    
-	    // Start threat
-	    Thread t = new Thread(updater);
-	    t.setDaemon(true);
-	    t.start();
-	  }
-	
-	/**
-	 * Creates all styles for syntax highlighting
-	 * @param sc
-	 */
+        });
+
+        // Set initial text
+        document.insertString(0, "('bool'='true' and 'integer'>='50') or 'numeric'<='30'", null);
+
+        // Start threat
+        Thread t = new Thread(updater);
+        t.setDaemon(true);
+        t.start();
+    }
+
+    /**
+     * Creates all styles for syntax highlighting
+     * @param sc
+     */
     private static void createStyles(StyleContext sc) {
 
         Style defaultStyle = sc.getStyle(StyleContext.DEFAULT_STYLE);
@@ -258,21 +258,21 @@ public class Example6 {
         StyleConstants.setForeground(styleValue, Color.DARK_GRAY);
         StyleConstants.setBold(styleValue, true);
     }
-	
-	/**
-	 * Sets the style on the document
-	 * @param offset
-	 * @param length
-	 * @param style
-	 */
-	private static void setStyle(final int offset, final int length, final Style style) {
-	    document.setCharacterAttributes(offset, length, style, true);
-	}
 
-	/**
-	 * Reacts on a document update 
-	 */
-	private static void update()   {
+    /**
+     * Sets the style on the document
+     * @param offset
+     * @param length
+     * @param style
+     */
+    private static void setStyle(final int offset, final int length, final Style style) {
+        document.setCharacterAttributes(offset, length, style, true);
+    }
+
+    /**
+     * Reacts on a document update 
+     */
+    private static void update()   {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -284,5 +284,5 @@ public class Example6 {
                 }
             }
         });
-	}
+    }
 }

@@ -55,13 +55,13 @@ public class SelectorBuilderCallback<T> implements ICallback{
 
     /** The current data type */
     private DataType<?>        currentType     = null;
-    
+
     /**
      * Creates a new selector 
      * @param selector
      */
     protected SelectorBuilderCallback(IAccessor<T> accessor, SelectorBuilder<T> selector, String query) {
-    	this.query = query;
+        this.query = query;
         this.selector = selector;
         this.accessor = accessor;
     }
@@ -177,11 +177,11 @@ public class SelectorBuilderCallback<T> implements ICallback{
      * @param length
      */
     public void value(int start, int length) {
-    	
-    	String string = escape(query.substring(start + 1, start + length - 1));
+
+        String string = escape(query.substring(start + 1, start + length - 1));
         if (currentOp == null) { throw new RuntimeException("Unknown operator: " + string); }
         if (currentType == null) { throw new RuntimeException("Unknown data type: " + string); }
-        
+
         Object value = currentType.fromString(string);
         switch (currentOp) {
         case EQUALS:
@@ -249,23 +249,23 @@ public class SelectorBuilderCallback<T> implements ICallback{
      * @param substring
      * @return
      */
-	private String escape(String string) {
-		StringBuffer buffer = new StringBuffer();
-		char[] array = string.toCharArray();
-		for (int i=0; i<array.length; i++){
-			if (array[i]=='\\') {
-				if (i == array.length-1 || !(array[i+1]=='\\' || array[i+1]=='\'')) {
-					throw new RuntimeException("Invalid escape sequence in: "+string);
-				} else {
-					buffer.append(array[i+1]);
-					i++;
-				}
-			} else {
-				buffer.append(array[i]);
-			}
-		}
-		return buffer.toString();
-	}
+    private String escape(String string) {
+        StringBuffer buffer = new StringBuffer();
+        char[] array = string.toCharArray();
+        for (int i=0; i<array.length; i++){
+            if (array[i]=='\\') {
+                if (i == array.length-1 || !(array[i+1]=='\\' || array[i+1]=='\'')) {
+                    throw new RuntimeException("Invalid escape sequence in: "+string);
+                } else {
+                    buffer.append(array[i+1]);
+                    i++;
+                }
+            } else {
+                buffer.append(array[i]);
+            }
+        }
+        return buffer.toString();
+    }
 
     /**
      * Handle an operator

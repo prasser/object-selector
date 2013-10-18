@@ -38,7 +38,7 @@ public class Tests extends TestCase {
 
         // Create a set of 1000 elements
     	Random random = new Random(0xDEADBEEF);
-        List<Element> elements = new ArrayList<Element>();
+    	List<Element> elements = new ArrayList<Element>();
         for (int i=0; i<1000; i++){
             elements.add(Element.getRandomElement(random));
         }

@@ -22,19 +22,22 @@ package de.linearbits.objectselector.datatypes;
  * Double data type
  * @author Fabian Prasser
  */
-public class DDouble extends DataType<Double>{
+public class DNumeric extends DataType<Double>{
 
-    protected DDouble(){
+    /**
+     * Creates a new numeric data type
+     */
+    protected DNumeric(){
         // Empty by design
     }
 
     @Override
     public Double fromObject(Object object) {
-    	if (object instanceof Double) return (Double)object;
-    	else if (object instanceof Character) return Double.valueOf((Character)object);
-    	else if (object instanceof Short) return Double.valueOf((Short)object);
-    	else if (object instanceof Integer) return Double.valueOf((Integer)object);
-    	else if (object instanceof Float) return Double.valueOf((Float)object);
+        if (object instanceof Double) return (Double)object;
+        else if (object instanceof Character) return Double.valueOf((Character)object);
+        else if (object instanceof Short) return Double.valueOf((Short)object);
+        else if (object instanceof Integer) return Double.valueOf((Integer)object);
+        else if (object instanceof Float) return Double.valueOf((Float)object);
         return fromString(String.valueOf(object));
     }
 

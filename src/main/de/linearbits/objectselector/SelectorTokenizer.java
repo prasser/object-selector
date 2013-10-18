@@ -25,8 +25,8 @@ package de.linearbits.objectselector;
  * @author Fabian Prasser
  */
 public class SelectorTokenizer<T> {
-	
-	/** The callback*/
+
+    /** The callback*/
     private ICallback          callback = null;
 
     /**
@@ -59,35 +59,35 @@ public class SelectorTokenizer<T> {
                     if (first) {
                         callback.field(quote, i-quote+1);
                     } else {
-                    	callback.value(quote, i-quote+1);
+                        callback.value(quote, i-quote+1);
                     }
                     quote = -1;
                     first = !first;
                 }
             } else if (quote == -1 && data[i]=='(') {
-            	callback.begin(i);
+                callback.begin(i);
             } else if (quote == -1 && data[i]==')') {
-            	callback.end(i);
+                callback.end(i);
             } else if (quote == -1 && i<data.length-2 && data[i]=='a' && data[i+1]=='n' && data[i+2]=='d') {
-            	callback.and(i, 3);
+                callback.and(i, 3);
                 i+=2;
             } else if (quote == -1 && i<data.length-1 && data[i]=='o' && data[i+1]=='r') {
-            	callback.or(i, 2);
+                callback.or(i, 2);
                 i++;
             } else if ((quote == -1 && i<data.length-1 && data[i]=='<' && data[i+1]=='=')) {
-            	callback.leq(i, 2);
+                callback.leq(i, 2);
                 i++;
             } else if ((quote == -1 && i<data.length-1 && data[i]=='>' && data[i+1]=='=')) {
-            	callback.geq(i, 2);
+                callback.geq(i, 2);
                 i++;
             } else if (quote == -1 && data[i]=='=') {
-            	callback.equals(i);
+                callback.equals(i);
             } else if (quote == -1 && data[i]=='<') {
-            	callback.less(i);
+                callback.less(i);
             } else if (quote == -1 && data[i]=='>') {
-            	callback.greater(i);
+                callback.greater(i);
             } else if (quote == -1 && (data[i]!=' ' && data[i]!='\t' && data[i]!='\n')){
-            	callback.invalid(i);
+                callback.invalid(i);
             }
 
             if (i>=data.length) break;

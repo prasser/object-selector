@@ -172,13 +172,13 @@ public class Selector<T> {
         }
         return Arrays.copyOf(result, list.size());
     }
-    
+
     /**
      * Returns a string representation of the operator tree
      */
     public String toString() {
-    	StringBuffer b = new StringBuffer();
-    	root.toString(b, "");
-    	return b.toString();
+        StringBuffer b = new StringBuffer();
+        root.toString(b, "");
+        return b.toString();
     }
 }

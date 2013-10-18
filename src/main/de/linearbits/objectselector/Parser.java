@@ -125,7 +125,7 @@ public class Parser<T> {
                 return ops.get(offset);
 
             } else if ((ops.get(offset) instanceof ParenthesisOperator) &&
-                       (ops.get(offset + length - 1) instanceof ParenthesisOperator)) {
+                    (ops.get(offset + length - 1) instanceof ParenthesisOperator)) {
 
                 // Remove brackets
                 return parse(ops, offset + 1, length - 2);

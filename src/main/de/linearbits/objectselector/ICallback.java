@@ -24,78 +24,78 @@ package de.linearbits.objectselector;
  */
 public interface ICallback {
 
-	/** 
-	 * Logical and
-	 * 
-	 * @param start
-	 * @param length
-	 */
+    /** 
+     * Logical and
+     * 
+     * @param start
+     * @param length
+     */
     void and(int start, int length);
-    
+
     /**
      * Open parenthesis
      * @param start
      */
     void begin(int start);
-    
+
     /**
      * Closing parenthesis
      * @param start
      */
     void end(int start);
-    
+
     /**
      * Equals
      * @param start
      */
     void equals(int start);
-    
+
     /**
      * Field
      * @param start
      * @param length
      */
     void field(int start, int length);
-    
+
     /**
      * Greater than or equals
      * @param start
      * @param length
      */
     void geq(int start, int length);
-    
+
     /**
      * Greater than
      * @param start
      */
     void greater(int start);
-    
+
     /**
      * Invalid expression
      * @param start
      */
     void invalid(int start);
-    
+
     /**
      * Less than or equals
      * @param start
      * @param length
      */
     void leq(int start, int length);
-    
+
     /**
      * Less than
      * @param start
      */
     void less(int start);
-    
+
     /**
      * Logical or
      * @param start
      * @param length
      */
     void or(int start, int length);
-    
+
     /**
      * Value
      * @param start

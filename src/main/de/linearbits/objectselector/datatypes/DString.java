@@ -24,6 +24,9 @@ package de.linearbits.objectselector.datatypes;
  */
 public class DString extends DataType<String>{
 
+    /**
+     * Creates a new string data type
+     */
     protected DString(){
         // Empty by design
     }

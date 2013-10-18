@@ -25,11 +25,12 @@ import de.linearbits.objectselector.IAccessor;
  * @author Fabian Prasser
  */
 public abstract class AbstractOperator<T> {
-	
-	/** Number of operands*/
+
+    /** Number of operands*/
     protected final int operands;
+    /** The associated accessor*/
     protected final IAccessor<T> accessor;
-    
+
     /**
      * Creates a new instance
      * @param accessor
@@ -39,20 +40,20 @@ public abstract class AbstractOperator<T> {
         this.operands = operands;
         this.accessor = accessor;
     }
-    
+
     /**
      * Evaluate the given element
      * @param object
      * @return
      */
     public abstract boolean eval(T object);
-    
+
     /**
      * Returns the number of operands
      * @return
      */
     public int getNumOperands(){
-    	return this.operands;
+        return this.operands;
     }
 
     /**
@@ -60,5 +61,5 @@ public abstract class AbstractOperator<T> {
      * @param buffer
      * @param prefix
      */
-	public abstract void toString(StringBuffer buffer, String prefix);
+    public abstract void toString(StringBuffer buffer, String prefix);
 }

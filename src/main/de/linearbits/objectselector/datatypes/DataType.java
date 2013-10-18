@@ -27,7 +27,7 @@ public abstract class DataType<T> {
     /** String*/
     public static final DString  STRING  = new DString();
     /** Numeric*/
-    public static final DDouble  NUMERIC  = new DDouble();
+    public static final DNumeric  NUMERIC  = new DNumeric();
     /** Date with format "yyyy-MM-dd"*/
     public static final DDate    DATE    = new DDate("yyyy-MM-dd");
     /** Boolean*/

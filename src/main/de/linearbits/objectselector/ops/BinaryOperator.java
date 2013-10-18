@@ -25,49 +25,49 @@ import de.linearbits.objectselector.IAccessor;
  * @author Fabian Prasser
  */
 public abstract class BinaryOperator<T> extends AbstractOperator<T>{
-    
-	/** Left child*/
-	protected AbstractOperator<T> left;
-	/** Right child*/
-	protected AbstractOperator<T> right;
-	/** For conversion to string*/
-	private final String label;
 
-	/**
-	 * Constructor
-	 */
+    /** Left child*/
+    protected AbstractOperator<T> left;
+    /** Right child*/
+    protected AbstractOperator<T> right;
+    /** For conversion to string*/
+    private final String label;
+
+    /**
+     * Constructor
+     */
     public BinaryOperator(IAccessor<T> accessor, String label) {
         super(accessor, 2);
         this.label = label;
     }
 
     /** Returns the left operator*/
-	public AbstractOperator<T> getLeft() {
-		return left;
-	}
+    public AbstractOperator<T> getLeft() {
+        return left;
+    }
 
-	/** Returns the right operator*/
-	public AbstractOperator<T> getRight() {
-		return right;
-	}
+    /** Returns the right operator*/
+    public AbstractOperator<T> getRight() {
+        return right;
+    }
 
-	/** Sets the left operator*/
-	public void setLeft(AbstractOperator<T> left) {
-		this.left = left;
-	}
+    /** Sets the left operator*/
+    public void setLeft(AbstractOperator<T> left) {
+        this.left = left;
+    }
 
-	/** Sets the right operator*/
-	public void setRight(AbstractOperator<T> right) {
-		this.right = right;
-	}
-	
-	@Override
-	public void toString(StringBuffer buffer, String prefix) {
-		buffer.append(prefix);
-		buffer.append(label);
-		buffer.append("\n");
-		left.toString(buffer, prefix + "   ");
-		buffer.append("\n");
-		right.toString(buffer, prefix + "   ");	
-	}
+    /** Sets the right operator*/
+    public void setRight(AbstractOperator<T> right) {
+        this.right = right;
+    }
+
+    @Override
+    public void toString(StringBuffer buffer, String prefix) {
+        buffer.append(prefix);
+        buffer.append(label);
+        buffer.append("\n");
+        left.toString(buffer, prefix + "   ");
+        buffer.append("\n");
+        right.toString(buffer, prefix + "   ");	
+    }
 }

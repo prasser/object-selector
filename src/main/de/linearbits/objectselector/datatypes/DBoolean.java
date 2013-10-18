@@ -23,19 +23,22 @@ package de.linearbits.objectselector.datatypes;
  * @author Fabian Prasser
  */
 public class DBoolean extends DataType<Boolean> {
-	
-	protected DBoolean(){
-		// Empty by design
-	}
-	
-	@Override
-	public Boolean fromObject(Object object) {
-	    if (object instanceof Boolean) return (Boolean)object;
-		return fromString(String.valueOf(object));
-	}
 
-	@Override
-	public Boolean fromString(String value) {
-		return Boolean.valueOf(value);
-	}
+    /**
+     * Creates a new boolean data type
+     */
+    protected DBoolean(){
+        // Empty by design
+    }
+
+    @Override
+    public Boolean fromObject(Object object) {
+        if (object instanceof Boolean) return (Boolean)object;
+        return fromString(String.valueOf(object));
+    }
+
+    @Override
+    public Boolean fromString(String value) {
+        return Boolean.valueOf(value);
+    }
 }

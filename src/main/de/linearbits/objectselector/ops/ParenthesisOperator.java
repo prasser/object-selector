@@ -25,35 +25,35 @@ import de.linearbits.objectselector.IAccessor;
  * @author Fabian Prasser
  */
 public class ParenthesisOperator<T> extends AbstractOperator<T>{
-    
-	/** Open or close parentheses*/
-	protected final boolean begin;
-    
-	/**
-	 * Constructor
-	 * @param begin
-	 */
-	public ParenthesisOperator(IAccessor<T> accessor, boolean begin) {
+
+    /** Open or close parentheses*/
+    protected final boolean begin;
+
+    /**
+     * Constructor
+     * @param begin
+     */
+    public ParenthesisOperator(IAccessor<T> accessor, boolean begin) {
         super(accessor, 0);
         this.begin = begin;
     }
-    
+
     @Override
     public boolean eval(T object) {
         throw new UnsupportedOperationException("Parentheses cannot be evaluated");
     }
-    
+
     /** Open or close parentheses*/
     public boolean isBegin() {
-    	return begin;
+        return begin;
     }
 
-	@Override
-	public void toString(StringBuffer buffer, String prefix) {
-		if (begin) {
-			buffer.append(prefix).append("(");
-		} else {
-			buffer.append(prefix).append(")");			
-		}
-	}
+    @Override
+    public void toString(StringBuffer buffer, String prefix) {
+        if (begin) {
+            buffer.append(prefix).append("(");
+        } else {
+            buffer.append(prefix).append(")");			
+        }
+    }
 }
