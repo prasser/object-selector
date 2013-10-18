@@ -48,9 +48,9 @@ public class Example1 {
         // Create a selector with the builder pattern
         Selector<Element> selector = new SelectorBuilder<Element>(new ElementAccessor())
                 .begin()
-                .field("bool").equals(true)
-                .and()
-                .field("integer").geq(50)
+                    .field("bool").equals(true)
+                    .and()
+                    .field("integer").geq(50)
                 .end()
                 .or()
                 .field("numeric").leq(30d)
