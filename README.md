@@ -69,8 +69,9 @@ for (Element element : list){
 }
 ```
 
-The package also provides access to a tokenizer that can be used to graphically
-highlight the syntax of a selection predicate provided by a user:
+The library also features a tokenizer that can be used to graphically
+highlight the syntax of a selection predicate provided by a user and give
+feedback about syntax errors:
 
 ![Image](https://raw.github.com/prasser/object-selector/master/doc/example.png)
 
