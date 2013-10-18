@@ -4,8 +4,9 @@ ObjectSelector - Object selection library
 Introduction
 ------
 ObjectSelector is a small, general purpose Java library for selecting objects from 
-sets of objects. To this end, it enables users to specify simple selection predicates. It 
-supports multiple features, including: 
+sets of objects. To this end, it enables users to specify simple selection predicates. 
+The main usage scenario to provide users of APIs or GUIs with the ability to select
+objects. It supports multiple features, including: 
 
 1. Converting between different data types
 
@@ -22,6 +23,9 @@ syntax highlighting. It has no dependencies.
 
 Examples
 ------
+
+Assume you want to select a set of instances of the following class:
+
 ```Java
 public class Element {
 	public boolean bool;
@@ -29,6 +33,8 @@ public class Element {
 	public double numeric;
 }
 ```
+
+In an API this can be done with the builder pattern, as is shown here:
 
 ```Java
 Selector<Element> selector 
@@ -43,12 +49,17 @@ Selector<Element> selector
 			                .build();
 ```
 
+Moreover, the selection predicate can also be provided as a string that will be parsed
+by the builder:
+
 ```Java
 Selector<Element> selector 
 		= new SelectorBuilder<Element>(new ObjectAccessor<Element>(Element.class),
                              "('bool'='true' and 'integer'>='50') or 'numeric'<='30'")
                              .build();
 ```
+
+The constructed selector can be used to select objects in the following way:
 
 ```Java
 for (Element element : list){
@@ -58,7 +69,12 @@ for (Element element : list){
 }
 ```
 
+The package also provides access to a tokenizer that can be used to graphically
+highlight the syntax of a selection predicate provided by a user:
+
 ![Image](https://raw.github.com/prasser/object-selector/master/doc/example.png)
+
+The code for this dialog can be found [here](https://github.com/prasser/object-selector/tree/master/src/examples/Example6.java).
 
 Documentation
 ------
