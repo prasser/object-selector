@@ -31,7 +31,8 @@ public class Element {
 ```
 
 ```Java
-Selector<Element> selector = new SelectorBuilder<Element>(new ObjectAccessor<Element>(Element.class))
+Selector<Element> selector 
+		= new SelectorBuilder<Element>(new ObjectAccessor<Element>(Element.class))
 			                .begin()
 			                    .field("bool").equals(true)
 			                    .and()
@@ -43,9 +44,10 @@ Selector<Element> selector = new SelectorBuilder<Element>(new ObjectAccessor<Ele
 ```
 
 ```Java
-Selector<Element> selector = new SelectorBuilder<Element>(new ObjectAccessor<Element>(Element.class),
-                                              "('bool'='true' and 'integer'>='50') or 'numeric'<='30'")
-                                              .build();
+Selector<Element> selector 
+		= new SelectorBuilder<Element>(new ObjectAccessor<Element>(Element.class),
+                             "('bool'='true' and 'integer'>='50') or 'numeric'<='30'")
+                             .build();
 ```
 
 ```Java
