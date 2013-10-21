@@ -34,7 +34,7 @@ public class Element {
 }
 ```
 
-In an API this can be done with the builder pattern, as is shown here:
+In an API this can be done with the builder pattern:
 
 ```Java
 Selector<Element> selector 
@@ -59,7 +59,7 @@ Selector<Element> selector
                              .build();
 ```
 
-The constructed selector can be used to select objects in the following way:
+The constructed selector can then be used to select objects:
 
 ```Java
 for (Element element : list){
@@ -70,7 +70,7 @@ for (Element element : list){
 ```
 
 The library also features a tokenizer that can be used to graphically
-highlight the syntax of a selection predicate provided by a user and give
+highlight the syntax of a predicate provided by a user and give
 feedback about syntax errors:
 
 ![Image](https://raw.github.com/prasser/object-selector/master/doc/example.png)
@@ -81,8 +81,7 @@ Documentation
 ------
 More examples are available in the [repository](https://github.com/prasser/object-selector/tree/master/src/examples).
 
-Javadoc documentation for the whole repository can be found
-[here](https://rawgithub.com/prasser/object-selector/master/doc/index.html).
+Javadoc documentation is available [here](https://rawgithub.com/prasser/object-selector/master/doc/index.html).
 
 Downloads
 ------
