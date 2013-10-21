@@ -1,11 +1,11 @@
-ObjectSelector - Object selection library
+Java Object Selection Library
 ====
 
 Introduction
 ------
 ObjectSelector is a small, general purpose Java library for selecting objects from 
 sets of objects. To this end, it enables users to specify simple selection predicates. 
-The main usage scenario to provide users of APIs or GUIs with the ability to select
+The main usage scenario is to provide users of APIs or GUIs with the ability to select
 objects. It supports multiple features, including: 
 
 1. Converting between different data types
@@ -18,7 +18,7 @@ objects. It supports multiple features, including:
 
 5. Creating selection predicates by parsing query strings
 
-The library is extensible and is also suitable for building user interfaces with
+The library is extensible and suitable for building user interfaces with
 syntax highlighting. It has no dependencies.
 
 Examples
