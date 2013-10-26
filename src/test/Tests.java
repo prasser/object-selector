@@ -48,14 +48,14 @@ public class Tests extends TestCase {
 
         // Create a selector with the builder pattern
         Selector<Element> selector = new SelectorBuilder<Element>(new ElementAccessor())
-										            .begin()
-										                .field("bool").equals(true)
-										                .and()
-										                .field("integer").geq(50)
-										            .end()
-										            .or()
-										            .field("numeric").leq(30d)
-										            .build();
+                                        .begin()
+                                            .field("bool").equals(true)
+                                            .and()
+                                            .field("integer").geq(50)
+                                        .end()
+                                        .or()
+                                        .field("numeric").leq(30d)
+                                        .build();
 
         // Select
         List<Integer> list1 = getSelected(selector, elements);
@@ -123,14 +123,14 @@ public class Tests extends TestCase {
 
         // Create a selector with the builder pattern
         Selector<Element> selector = new SelectorBuilder<Element>(new ObjectAccessor<Element>(Element.class))
-													                .begin()
-													                    .field("bool").equals(true)
-													                    .and()
-													                    .field("integer").geq(50)
-													                .end()
-													                .or()
-													                .field("numeric").leq(30d)
-													                .build();
+                                        .begin()
+                                            .field("bool").equals(true)
+                                            .and()
+                                            .field("integer").geq(50)
+                                        .end()
+                                        .or()
+                                        .field("numeric").leq(30d)
+                                        .build();
     	
 
         // Select
