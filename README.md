@@ -1,11 +1,11 @@
-ObjectSelector - Object selection library
+Java Object Selection Library
 ====
 
 Introduction
 ------
 ObjectSelector is a small, general purpose Java library for selecting objects from 
 sets of objects. To this end, it enables users to specify simple selection predicates. 
-The main usage scenario to provide users of APIs or GUIs with the ability to select
+The main usage scenario is to provide users of APIs or GUIs with the ability to select
 objects. It supports multiple features, including: 
 
 1. Converting between different data types
@@ -18,7 +18,7 @@ objects. It supports multiple features, including:
 
 5. Creating selection predicates by parsing query strings
 
-The library is extensible and is also suitable for building user interfaces with
+The library is extensible and suitable for building user interfaces with
 syntax highlighting. It has no dependencies.
 
 Examples
@@ -34,7 +34,7 @@ public class Element {
 }
 ```
 
-In an API this can be done with the builder pattern, as is shown here:
+In an API this can be done with the builder pattern:
 
 ```Java
 Selector<Element> selector 
@@ -59,7 +59,7 @@ Selector<Element> selector
                              .build();
 ```
 
-The constructed selector can be used to select objects in the following way:
+The constructed selector can then be used to select objects:
 
 ```Java
 for (Element element : list){
@@ -70,7 +70,7 @@ for (Element element : list){
 ```
 
 The library also features a tokenizer that can be used to graphically
-highlight the syntax of a selection predicate provided by a user and give
+highlight the syntax of a predicate provided by a user and give
 feedback about syntax errors:
 
 ![Image](https://raw.github.com/prasser/object-selector/master/doc/example.png)
@@ -81,8 +81,7 @@ Documentation
 ------
 More examples are available in the [repository](https://github.com/prasser/object-selector/tree/master/src/examples).
 
-Javadoc documentation for the whole repository can be found
-[here](https://rawgithub.com/prasser/object-selector/master/doc/index.html).
+Javadoc documentation is available [here](https://rawgithub.com/prasser/object-selector/master/doc/index.html).
 
 Downloads
 ------
