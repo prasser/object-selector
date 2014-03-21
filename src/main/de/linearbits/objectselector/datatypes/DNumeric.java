@@ -18,17 +18,40 @@
 
 package de.linearbits.objectselector.datatypes;
 
+import java.text.DecimalFormat;
+import java.text.ParseException;
+
 /**
  * Double data type
  * @author Fabian Prasser
  */
 public class DNumeric extends DataType<Double>{
 
+	/** Format, if any*/
+	private String string;
+	/** Format, if any*/
+	private DecimalFormat format;
+	
     /**
      * Creates a new numeric data type
      */
     protected DNumeric(){
-        // Empty by design
+    	this.string = null;
+    	this.format = null;
+    }
+    
+    /**
+     * Creates a new numeric data type with given format
+     * @param format
+     */
+    protected DNumeric(String format){
+    	if (format == null){
+    		this.string = null;
+    		this.format = null;	
+    	} else {
+    		this.string = format;
+    		this.format = new DecimalFormat(string);
+    	}
     }
 
     @Override
@@ -43,6 +66,10 @@ public class DNumeric extends DataType<Double>{
 
     @Override
     public Double fromString(String value) {
-        return Double.valueOf(value);
+        try {
+			return format == null ? Double.valueOf(value) : format.parse(value).doubleValue();
+		} catch (NumberFormatException | ParseException e) {
+			throw new RuntimeException(e);
+		}
     }
 }
