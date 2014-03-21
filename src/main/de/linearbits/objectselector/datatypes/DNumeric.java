@@ -41,8 +41,10 @@ public class DNumeric extends DataType<Double>{
     }
     
     /**
-     * Creates a new numeric data type with given format
+     * Create a numeric with a format string. Format strings must be valid formats
+     * for <code>DecimalFormat</code>.
      * @param format
+     * @see <a href="http://docs.oracle.com/javase/7/docs/api/java/text/DecimalFormat.html">DecimalFormat</a>
      */
     protected DNumeric(String format){
     	if (format == null){

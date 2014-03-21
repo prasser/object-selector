@@ -32,8 +32,10 @@ public class DDate extends DataType<Date> {
     private final SimpleDateFormat formatter;
 
     /**
-     * Creates a new date data type
-     * @param format The format as required by <code>java.text.SimpleDateFormat</code>
+     * Create a date with a format string. Format strings must be valid formats
+     * for <code>SimpleDateFormat</code>.
+     * @param format
+     * @see <a href="http://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html">SimpleDateFormat</a>
      */
     protected DDate(String format){
         formatter = new SimpleDateFormat(format);
