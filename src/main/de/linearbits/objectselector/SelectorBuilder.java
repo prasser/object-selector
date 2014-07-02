@@ -22,6 +22,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import de.linearbits.objectselector.ops.AbstractOperator;
 import de.linearbits.objectselector.ops.BinaryOperator;
@@ -150,6 +151,22 @@ public class SelectorBuilder<T> {
             @Override
             public boolean eval(T element) {
                 return getDouble(element) == val;
+            }
+        });
+        return this;
+    }
+
+    /**
+     * Matches regular expression 
+     * @param val
+     * @return
+     */
+    public SelectorBuilder<T> matches(final String val){
+    	final Pattern pattern = Pattern.compile(val);
+        operators.add(new UnaryOperator<T>(accessor, context, "matches[regexp]"+val){
+            @Override
+            public boolean eval(T element) {
+            	return pattern.matcher(getString(element)).matches();
             }
         });
         return this;
