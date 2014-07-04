@@ -70,4 +70,9 @@ public abstract class BinaryOperator<T> extends AbstractOperator<T>{
         buffer.append("\n");
         right.toString(buffer, prefix + "   ");	
     }
+
+    @Override
+    public String toString() {
+        return label;
+    }
 }

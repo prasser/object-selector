@@ -200,7 +200,7 @@ public class SelectorBuilderCallback<T> implements ICallback{
             } else if (value instanceof String) {
                 selector.equals((String) value);
             } else if (value instanceof Double) {
-                selector.equals((Double) value);
+                selector.equals(((Double)value).doubleValue());
             } else if (value instanceof Boolean) {
                 selector.equals((Boolean) value);
             }

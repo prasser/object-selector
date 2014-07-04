@@ -131,4 +131,9 @@ public abstract class UnaryOperator<T> extends AbstractOperator<T>{
     public void toString(StringBuffer buffer, String prefix) {
         buffer.append(prefix).append(context).append(label);	
     }
+
+    @Override
+    public String toString() {
+        return label;
+    }
 }

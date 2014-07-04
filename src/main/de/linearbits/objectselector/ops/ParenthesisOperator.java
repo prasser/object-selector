@@ -56,4 +56,10 @@ public class ParenthesisOperator<T> extends AbstractOperator<T>{
             buffer.append(prefix).append(")");			
         }
     }
+
+    @Override
+    public String toString() {
+        if (begin) return "(";
+        else return ")";
+    }
 }
