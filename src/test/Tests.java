@@ -267,6 +267,26 @@ public class Tests extends TestCase {
         }
     }
 
+    @Test
+    public void test10() {
+
+        try {
+            List<int[]> elements = getIntArrays();
+            
+            // Create header
+            IntArrayAccessor accessor = new IntArrayAccessor(new String[]{"field1", "field2", "field3"});
+
+            // Create a selector by parsing a query string
+            Selector<int[]> selector = new SelectorBuilder<int[]>(accessor, 
+                                                  "'field1'<>'20' and 'field2'<>'20' and 'field3'<>'20'")
+                                                  .build();
+
+            // Select
+            result = getSelected(selector, elements);
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
+    }
     /**
      * Create a set of 1000 pseudo-random elements
      * @return
