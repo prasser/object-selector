@@ -35,6 +35,7 @@ public class SelectorBuilderCallback<T> implements ICallback{
      */
     private static enum Operator {
         EQUALS,
+        NEQ,
         GEQ,
         LEQ,
         LESS,
@@ -132,6 +133,15 @@ public class SelectorBuilderCallback<T> implements ICallback{
     /**
      * Handle an operator
      * @param start
+     * @param length
+     */
+    public void neq(int start, int length) {
+        setCurrent(Operator.NEQ);
+    }
+
+    /**
+     * Handle an operator
+     * @param start
      */
     public void greater(int start) {
         setCurrent(Operator.GREATER);
@@ -193,6 +203,17 @@ public class SelectorBuilderCallback<T> implements ICallback{
                 selector.equals((Double) value);
             } else if (value instanceof Boolean) {
                 selector.equals((Boolean) value);
+            }
+            break;
+        case NEQ:
+            if (value instanceof Date) {
+                selector.neq((Date) value);
+            } else if (value instanceof String) {
+                selector.neq((String) value);
+            } else if (value instanceof Double) {
+                selector.neq((Double) value);
+            } else if (value instanceof Boolean) {
+                selector.neq((Boolean) value);
             }
             break;
         case GEQ:

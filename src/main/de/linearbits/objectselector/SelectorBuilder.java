@@ -112,6 +112,66 @@ public class SelectorBuilder<T> {
     }
 
     /**
+     * Boolean not equals
+     * @param val
+     * @return
+     */
+    public SelectorBuilder<T> neq(final Boolean val){
+        operators.add(new UnaryOperator<T>(accessor, context, "<>[boolean]"+val){
+            @Override
+            public boolean eval(T element) {
+                return getBoolean(element).compareTo(val) != 0;
+            }
+        });
+        return this;
+    }
+
+    /**
+     * Not equals for Dates
+     * @param val
+     * @return
+     */
+    public SelectorBuilder<T> neq(final Date val){
+        operators.add(new UnaryOperator<T>(accessor, context, "<>[date]"+val){
+            @Override
+            public boolean eval(T element) {
+                return getDate(element).compareTo(val) != 0;
+            }
+        });
+        return this;
+    }
+
+    /**
+     * Numeric not equals
+     * @param val
+     * @return
+     */
+    public SelectorBuilder<T> neq(final double val){
+        operators.add(new UnaryOperator<T>(accessor, context, "<>[numeric]"+val){
+            @Override
+            public boolean eval(T element) {
+                return getDouble(element) != val;
+            }
+        });
+        return this;
+    }
+
+    /**
+     * Lexicographic not equals
+     * @param val
+     * @return
+     */
+    public SelectorBuilder<T> neq(final String val){
+        operators.add(new UnaryOperator<T>(accessor, context, "<>[string]"+val){
+            @Override
+            public boolean eval(T element) {
+                return getString(element).compareTo(val) != 0;
+            }
+        });
+        return this;
+    }
+
+    /**
      * Boolean equals
      * @param val
      * @return
@@ -157,6 +217,21 @@ public class SelectorBuilder<T> {
     }
 
     /**
+     * Lexicographic equals
+     * @param val
+     * @return
+     */
+    public SelectorBuilder<T> equals(final String val){
+        operators.add(new UnaryOperator<T>(accessor, context, "=[string]"+val){
+            @Override
+            public boolean eval(T element) {
+                return getString(element).compareTo(val) == 0;
+            }
+        });
+        return this;
+    }
+
+    /**
      * Matches regular expression 
      * @param val
      * @return
@@ -167,21 +242,6 @@ public class SelectorBuilder<T> {
             @Override
             public boolean eval(T element) {
             	return pattern.matcher(getString(element)).matches();
-            }
-        });
-        return this;
-    }
-
-    /**
-     * Lexicographic equals
-     * @param val
-     * @return
-     */
-    public SelectorBuilder<T> equals(final String val){
-        operators.add(new UnaryOperator<T>(accessor, context, "=[string]"+val){
-            @Override
-            public boolean eval(T element) {
-                return getString(element).compareTo(val) == 0;
             }
         });
         return this;

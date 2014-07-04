@@ -111,6 +111,7 @@ public class Example6 {
         public void equals(int start)           { setStyle(start, 1,      styleOperator);   }
         public void field(int start, int length){ setStyle(start, length, styleField);      }
         public void geq(int start, int length)  { setStyle(start, length, styleOperator);   }
+        public void neq(int start, int length)  { setStyle(start, length, styleOperator);   }
         public void greater(int start)          { setStyle(start, 1,      styleOperator);   }
         public void invalid(int start)          { /*Ignore*/                                }
         public void leq(int start, int length)  { setStyle(start, length, styleOperator);   }

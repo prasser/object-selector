@@ -74,6 +74,9 @@ public class SelectorTokenizer<T> {
             } else if (quote == -1 && i<data.length-1 && data[i]=='o' && data[i+1]=='r') {
                 callback.or(i, 2);
                 i++;
+            } else if ((quote == -1 && i<data.length-1 && data[i]=='<' && data[i+1]=='>')) {
+                callback.neq(i, 2);
+                i++;
             } else if ((quote == -1 && i<data.length-1 && data[i]=='<' && data[i+1]=='=')) {
                 callback.leq(i, 2);
                 i++;

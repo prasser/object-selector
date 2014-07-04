@@ -84,6 +84,12 @@ public interface ICallback {
     void leq(int start, int length);
 
     /**
+     * Not equals
+     * @param start
+     */
+    void neq(int start, int length);
+
+    /**
      * Less than
      * @param start
      */
