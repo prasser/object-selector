@@ -287,6 +287,30 @@ public class Tests extends TestCase {
             fail(e.getMessage());
         }
     }
+    
+
+    @Test
+    public void test11() {
+
+        try {
+            List<int[]> elements = getIntArrays();
+            
+            // Create header
+            IntArrayAccessor accessor = new IntArrayAccessor(new String[]{"field1", "field2", "field3"});
+
+            // Create a selector by parsing a query string
+            Selector<int[]> selector = new SelectorBuilder<int[]>(accessor, 
+                                                  "'field1'<>'20'<>'field1'")
+                                                  .build();
+
+            // Select
+            result = getSelected(selector, elements);
+            fail("This string must not compile");
+        } catch (Exception e) {
+            // Expected behaviour
+        }
+    }
+    
     /**
      * Create a set of 1000 pseudo-random elements
      * @return
