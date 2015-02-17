@@ -95,6 +95,6 @@ public class SelectorTokenizer<T> {
 
             if (i>=data.length) break;
         }
+        callback.check();
     }
-
 }

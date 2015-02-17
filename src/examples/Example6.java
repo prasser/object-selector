@@ -118,6 +118,7 @@ public class Example6 {
         public void less(int start)             { setStyle(start, 1,      styleOperator);   }
         public void or(int start, int length)   { setStyle(start, length, styleLogical);    }
         public void value(int start, int length){ setStyle(start, length, styleValue);      }
+        public void check()                     { /*Ignore*/                                }
     };
 
     /** Interval for the update thread */

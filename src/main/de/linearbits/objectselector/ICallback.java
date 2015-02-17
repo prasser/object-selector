@@ -39,6 +39,11 @@ public interface ICallback {
     void begin(int start);
 
     /**
+     * Final check after the tokenization process
+     */
+    void check();
+
+    /**
      * Closing parenthesis
      * @param start
      */
@@ -84,16 +89,16 @@ public interface ICallback {
     void leq(int start, int length);
 
     /**
-     * Not equals
-     * @param start
-     */
-    void neq(int start, int length);
-
-    /**
      * Less than
      * @param start
      */
     void less(int start);
+
+    /**
+     * Not equals
+     * @param start
+     */
+    void neq(int start, int length);
 
     /**
      * Logical or
@@ -101,7 +106,7 @@ public interface ICallback {
      * @param length
      */
     void or(int start, int length);
-
+    
     /**
      * Value
      * @param start

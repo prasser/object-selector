@@ -51,11 +51,14 @@ public class SelectorBuilderCallback<T> implements ICallback{
     /** The schema, if any */
     private final IAccessor<T>       accessor;
 
+    /** The current field */
+    private String                   currentField = null;
+
     /** The current operator */
-    private Operator           currentOp  = null;
+    private Operator                 currentOp   = null;
 
     /** The current data type */
-    private DataType<?>        currentType     = null;
+    private DataType<?>              currentType = null;
 
     /**
      * Creates a new selector 
@@ -73,6 +76,7 @@ public class SelectorBuilderCallback<T> implements ICallback{
      * @param length
      */
     public void and(int start, int length) {
+        checkCurrent();
         selector.and();
     }
     /**
@@ -80,7 +84,15 @@ public class SelectorBuilderCallback<T> implements ICallback{
      * @param start
      */
     public void begin(int start) {
+        checkCurrent();
         selector.begin();
+    }
+
+    /**
+     * Finally checks for dangling operators
+     */
+    public void check() {
+        checkCurrent();
     }
 
     /**
@@ -88,6 +100,7 @@ public class SelectorBuilderCallback<T> implements ICallback{
      * @param start
      */
     public void end(int start) {
+        checkCurrent();
         selector.end();
     }
 
@@ -118,7 +131,8 @@ public class SelectorBuilderCallback<T> implements ICallback{
         }
 
         this.currentType = type;
-        selector.field(field);
+        this.selector.field(field);
+        this.setCurrent(field);
     }
 
     /**
@@ -128,15 +142,6 @@ public class SelectorBuilderCallback<T> implements ICallback{
      */
     public void geq(int start, int length) {
         setCurrent(Operator.GEQ);
-    }
-
-    /**
-     * Handle an operator
-     * @param start
-     * @param length
-     */
-    public void neq(int start, int length) {
-        setCurrent(Operator.NEQ);
     }
 
     /**
@@ -177,10 +182,20 @@ public class SelectorBuilderCallback<T> implements ICallback{
      * @param start
      * @param length
      */
-    public void or(int start, int length) {
-        selector.or();
+    public void neq(int start, int length) {
+        setCurrent(Operator.NEQ);
     }
 
+    /**
+     * Handle an operator
+     * @param start
+     * @param length
+     */
+    public void or(int start, int length) {
+        checkCurrent();
+        selector.or();
+    }
+    
     /**
      * Handle an operator
      * @param start
@@ -266,6 +281,18 @@ public class SelectorBuilderCallback<T> implements ICallback{
     }
 
     /**
+     * Checks whether the current context is empty
+     */
+    private void checkCurrent() {
+        if (currentField != null) {
+            throw new RuntimeException("Dangling field: " + currentField);
+        }
+        if (currentOp != null) {
+            throw new RuntimeException("Dangling operator: " + currentOp);
+        }
+    }
+
+    /**
      * Escapes a string value
      * @param substring
      * @return
@@ -293,10 +320,28 @@ public class SelectorBuilderCallback<T> implements ICallback{
      * @param operator
      */
     private void setCurrent(Operator operator) {
+        
+        if (currentField == null) {
+            throw new RuntimeException("No field for operator: " + operator);
+        }
+        
         if (currentOp != null) {
             throw new RuntimeException("Duplicate operator: " + operator);
         } else {
             currentOp = operator;
+            currentField = null;
+        }
+    }
+    
+    /**
+     * Handle a field
+     * @param field
+     */
+    private void setCurrent(String field) {
+        if (currentField != null) {
+            throw new RuntimeException("Duplicate field: " + field);
+        } else {
+            currentField = field;
         }
     }
 }
