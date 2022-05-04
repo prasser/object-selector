@@ -87,7 +87,7 @@ public abstract class UnaryOperator<T> extends AbstractOperator<T>{
      * @return
      */
     public Date getDate(T element) {
-        if (type != null && type != DataType.DATE) {
+        if (type != null && type.getClass() != DataType.DATE.getClass()) {
             throw new RuntimeException("Type mismatch for field '"+context+"'. Cannot convert "+type.getClass().getSimpleName()+" to Date");
         } else if (type != null) {
             return (Date)type.fromObject(accessor.getValue(element, context));
@@ -102,7 +102,7 @@ public abstract class UnaryOperator<T> extends AbstractOperator<T>{
      * @return
      */
     public double getDouble(T element) {
-        if (type != null && type != DataType.NUMERIC) {
+        if (type != null && type.getClass() != DataType.NUMERIC.getClass()) {
             throw new RuntimeException("Type mismatch for field '"+context+"'. Cannot convert "+type.getClass().getSimpleName()+" to Numeric");
         } else if (type != null) {
             return (Double)type.fromObject(accessor.getValue(element, context));
