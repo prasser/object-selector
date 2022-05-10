@@ -37,15 +37,30 @@ public class DDate extends DataType<Date> {
      * @see <a href="http://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html">SimpleDateFormat</a>
      */
     protected DDate(String format){
+        if (format == null) {
+            throw new NullPointerException("Format must not be null");
+        }
         formatter = new SimpleDateFormat(format);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
+        DDate other = (DDate) obj;
+        if (formatter == null) {
+            if (other.formatter != null) return false;
+        } else if (!formatter.equals(other.formatter)) return false;
+        return true;
+    }
+
 
     @Override
     public Date fromObject(Object object) {
         if (object instanceof Date) return (Date)object;
         return fromString(String.valueOf(object));
     }
-
 
     @Override
     public Date fromString(String value) {
@@ -54,5 +69,13 @@ public class DDate extends DataType<Date> {
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((formatter == null) ? 0 : formatter.hashCode());
+        return result;
     }
 }

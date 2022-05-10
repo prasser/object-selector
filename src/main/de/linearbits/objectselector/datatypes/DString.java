@@ -31,14 +31,24 @@ public class DString extends DataType<String>{
     }
 
     @Override
+    public boolean equals(Object object) {
+        return object instanceof DString;
+    }
+
+
+    @Override
     public String fromObject(Object object) {
         if (object instanceof String) return (String)object;
         return String.valueOf(object);
     }
 
-
     @Override
     public String fromString(String value) {
         return value;
+    }
+
+    @Override
+    public int hashCode() {
+        return DString.class.hashCode();
     }
 }
