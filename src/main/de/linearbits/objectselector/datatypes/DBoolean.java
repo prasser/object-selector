@@ -31,6 +31,11 @@ public class DBoolean extends DataType<Boolean> {
     }
 
     @Override
+    public boolean equals(Object object) {
+        return object instanceof DBoolean;
+    }
+
+    @Override
     public Boolean fromObject(Object object) {
         if (object instanceof Boolean) return (Boolean)object;
         return fromString(String.valueOf(object));
@@ -39,5 +44,10 @@ public class DBoolean extends DataType<Boolean> {
     @Override
     public Boolean fromString(String value) {
         return Boolean.valueOf(value);
+    }
+
+    @Override
+    public int hashCode() {
+        return DBoolean.class.hashCode();
     }
 }

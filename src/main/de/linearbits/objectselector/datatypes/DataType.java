@@ -43,6 +43,12 @@ public abstract class DataType<T> {
 	}
 
     /**
+     * Equals
+     * @return
+     */
+    public abstract boolean equals(Object object);
+
+    /**
      * Converts an object
      * @param object
      * @return
@@ -55,4 +61,10 @@ public abstract class DataType<T> {
      * @return
      */
     public abstract T fromString(String string);
+
+    /**
+     * Hash code
+     * @return
+     */
+    public abstract int hashCode();
 }

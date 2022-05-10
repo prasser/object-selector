@@ -26,10 +26,10 @@ import java.text.ParseException;
  */
 public class DNumeric extends DataType<Double>{
 
-	/** Format, if any*/
-	private String string;
-	/** Format, if any*/
-	private DecimalFormat format;
+    /** Format, if any */
+    private String        string;
+    /** Format, if any */
+    private DecimalFormat format;
 	
     /**
      * Creates a new numeric data type
@@ -56,6 +56,21 @@ public class DNumeric extends DataType<Double>{
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
+        DNumeric other = (DNumeric) obj;
+        if (format == null) {
+            if (other.format != null) return false;
+        } else if (!format.equals(other.format)) return false;
+        if (string == null) {
+            if (other.string != null) return false;
+        } else if (!string.equals(other.string)) return false;
+        return true;
+    }
+
+    @Override
     public Double fromObject(Object object) {
         if (object instanceof Double) return (Double)object;
         else if (object instanceof Character) return Double.valueOf((Character)object);
@@ -72,5 +87,14 @@ public class DNumeric extends DataType<Double>{
 		} catch (NumberFormatException | ParseException e) {
 			throw new RuntimeException(e);
 		}
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((format == null) ? 0 : format.hashCode());
+        result = prime * result + ((string == null) ? 0 : string.hashCode());
+        return result;
     }
 }
